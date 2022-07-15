@@ -1,0 +1,25 @@
+server:
+  port: ${port:8001} # 通过vm参数指定不同端口，模拟集群
+spring:
+  application:
+    name: cloud-goods # 保证唯一
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        namespace: testc
+        group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8888
+      eager: true
+      web-context-unify: false
+  zipkin:
+    base-url: localhost：9999
+    discovery-client-enabled: false  #禁止向nacos注册
+  sleuth:
+    sampler:
+      rate: 100 #抽样率

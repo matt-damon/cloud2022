@@ -1,0 +1,30 @@
+server:
+  port: 8301
+spring:
+  application:
+    name: cloud-gateway # 保证唯一
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        namespace: test
+        group: DEFAULT_GROUP
+    gateway:
+      routes:
+        - id: cloud-jifen
+          uri: lb://cloud-jifen  #使用loadbalancer
+          predicates:
+            - Path=/jifen/**
+#            - MyHeader=name,jack #自定义谓词
+          filters:
+            - AddRequestHeader=token,123  #使用内置过滤器增加header
+            - CalServiceTime=a,b #自定义过滤器
+      discovery:
+        locator:
+          enabled: true
+    sentinel: #整合sentinel限流
+      transport:
+        port: 8719
+        dashboard: localhost:8888

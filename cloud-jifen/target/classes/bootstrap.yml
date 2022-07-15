@@ -1,0 +1,15 @@
+#从配置中心加载文件
+#文件名是通过公式查找
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: test
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        prefix: cloud-jifen
+        file-extension: yml
+  profiles:
+    active: test

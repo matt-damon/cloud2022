@@ -1,0 +1,17 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: cloud-order # 保证唯一
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        namespace: test
+        group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8888

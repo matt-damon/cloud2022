@@ -1,0 +1,13 @@
+server:
+  port: ${port:8001} # 通过vm参数指定不同端口，模拟集群
+spring:
+  application:
+    name: cloud-goods # 保证唯一
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        namespace: test
+        group: DEFAULT_GROUP
